@@ -6,25 +6,20 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import UseDarkModeToggle from "./hooks/useDarkModeToggle";
+
 import "./App.css";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   return (
-    <div className={`App ${darkMode ? "dark-mode" : ""}`}>
-      <button onClick={toggleDarkMode}>
-        {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-      </button>
+    <div className="App">
+      <UseDarkModeToggle />
       <Navbar toggleMenu={toggleMenu} />
       <Profile id="profile" />
       <About id="about" />
