@@ -47,9 +47,8 @@ nav {
 }
 
 a {
-  color: black;
-  text-decoration: none;
-  text-decoration-color: white;
+  color: rgb(0, 0, 0);
+  text-decoration: none rgb(255, 255, 255);
 }
 
 a:hover,
@@ -68,7 +67,8 @@ a:hover,
 .logo,
 .btn-color-2,
 h1,
-.nav-links li a {
+.nav-links li a,
+.contact-info-upper-container {
   color: black;
 }
 
@@ -664,8 +664,8 @@ a.dark-mode {
 
 a.dark-mode:hover,
 .menu-links a.dark-mode:hover {
-  color: #6200ee;
-  text-decoration-color: #6200ee;
+  color: #e2e2e2;
+  text-decoration-color: #e2e2e2;
 }
 
 .hamburger-icon.dark-mode span {
