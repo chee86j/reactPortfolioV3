@@ -10,13 +10,21 @@ import "./App.css";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? "dark-mode" : ""}`}>
+      <button onClick={toggleDarkMode}>
+        {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      </button>
       <Navbar toggleMenu={toggleMenu} />
       <Profile id="profile" />
       <About id="about" />

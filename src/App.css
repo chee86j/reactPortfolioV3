@@ -5,6 +5,7 @@
 * {
   margin: 0;
   padding: 0;
+  background-color: white;
 }
 
 body {
@@ -52,6 +53,7 @@ a {
 }
 
 a:hover,
+.nav-links a:hover,
 .menu-links a:hover {
   color: grey;
   text-decoration: underline;
@@ -61,6 +63,13 @@ a:hover,
 
 .logo {
   font-size: 2rem;
+}
+
+.logo,
+.btn-color-2,
+h1,
+.nav-links li a {
+  color: black;
 }
 
 .logo:hover {
@@ -300,13 +309,19 @@ section {
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: white;
+  /* background: white; */
   border-radius: 2rem;
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
   text-align: center;
   transform-style: preserve-3d;
   perspective: 1000px;
+}
+
+.details-container.color-container {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .section-container {
@@ -373,7 +388,7 @@ article .icon {
 .project-img {
   border-radius: 2rem;
   width: 90%;
-  height: 90%;
+  height: 80%;
 }
 
 .project-title {
@@ -385,7 +400,25 @@ article .icon {
 .project-btn {
   color: black;
   border-color: rgb(163, 163, 163);
+}
+
+.container-text {
   transform: translateZ(30px);
+}
+
+.project-text {
+  margin: 1rem;
+}
+
+.glare {
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.glare-inner {
+  width: 200%;
+  height: 200%;
+  transform-origin: 0% 0%;
 }
 
 /* Contact */
@@ -484,6 +517,89 @@ footer p {
   }
 }
 
+@media screen and (max-width: 600px) {
+  #contact,
+  footer {
+    height: 40vh;
+  }
+  #profile {
+    height: 83vh;
+    margin-bottom: 0;
+  }
+  article {
+    font-size: 1rem;
+  }
+  footer nav {
+    height: fit-content;
+    margin-bottom: 2rem;
+  }
+  .about-containers,
+  .contact-info-upper-container,
+  .btn-container {
+    flex-wrap: wrap;
+  }
+  .contact-info-container {
+    margin: 0;
+  }
+  .contact-info-container p,
+  .nav-links li a {
+    font-size: 1rem;
+  }
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+  .logo {
+    font-size: 1.5rem;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .section__pic-container {
+    width: auto;
+    height: 46vw;
+    justify-content: center;
+  }
+  .section__text__p2 {
+    font-size: 1.25rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .text-container {
+    text-align: justify;
+  }
+}
+
+/* Dark Mode */
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+a.dark-mode {
+  color: #bb86fc;
+}
+
+a.dark-mode:hover,
+.menu-links a.dark-mode:hover {
+  color: #6200ee;
+  text-decoration-color: #6200ee;
+}
+
+.hamburger-icon.dark-mode span {
+  background-color: #e0e0e0;
+}
+
+.details-container.dark-mode {
+  background: #333;
+  border-color: #555;
+}
+
+/* Responsive Design */
 @media screen and (max-width: 600px) {
   #contact,
   footer {

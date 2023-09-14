@@ -4,14 +4,20 @@ class CardTilt {
   constructor(element) {
     this.element = element;
     this.settings = {
-      scale: 1,
+      scale: 1.1,
       perspective: 1000,
       max: 15,
+      glare: true,
+      maxGlare: 0.5,
     };
 
     this.boundOnMouseEnter = this.onMouseEnter.bind(this);
     this.boundOnMouseMove = this.onMouseMove.bind(this);
     this.boundOnMouseLeave = this.onMouseLeave.bind(this);
+
+    if (this.settings.glare) {
+      this.prepareGlare();
+    }
 
     this.init();
   }
@@ -52,10 +58,37 @@ class CardTilt {
     const tiltY = (y - 0.5) * this.settings.max;
 
     this.element.style.transform = `perspective(${this.settings.perspective}px) rotateX(${tiltY}deg) rotateY(${tiltX}deg) scale(${this.settings.scale})`;
+
+    if (this.settings.glare) {
+      const glareOpacity = y * this.settings.maxGlare;
+      this.glareElement.style.opacity = glareOpacity;
+    }
   }
 
   reset() {
     this.element.style.transform = "";
+    if (this.settings.glare) {
+      this.glareElement.style.opacity = "0";
+    }
+  }
+
+  prepareGlare() {
+    const glareElement = document.createElement("div");
+    glareElement.classList.add("glare");
+    Object.assign(glareElement.style, {
+      position: "absolute",
+      top: "0",
+      left: "0",
+      width: "100%",
+      height: "100%",
+      background:
+        "linear-gradient(to right, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.1) 100%)",
+      opacity: "0",
+      transition: "opacity 0.5s",
+      pointerEvents: "none",
+    });
+    this.element.appendChild(glareElement);
+    this.glareElement = glareElement;
   }
 }
 
